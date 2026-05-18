@@ -47,15 +47,15 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  //  Sign Out
-  const logOut = async () => {
-    setLoading(true);
-    try {
-      return await signOut(auth);
-    } finally {
-      setLoading(false);
-    }
-  };
+  // //  Sign Out
+  // const logOut = async () => {
+  //   setLoading(true);
+  //   try {
+  //     return await signOut(auth);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
   // Update Profile
   const updateUser = (photoURL) => {
