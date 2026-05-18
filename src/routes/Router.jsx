@@ -1,0 +1,104 @@
+import { createBrowserRouter } from "react-router";
+import MainLayout from "../layout/MainLayout";
+import Home from "../pages/Home";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
+import AddCar from "../pages/AddCar";
+import BrowseCars from "../pages/BrowseCars";
+import MyBookings from "../pages/MyBookings";
+import MyListings from "../pages/MyListings";
+import CarDetails from "../pages/CarDetails";
+import PrivateRoute from "./PrivetRoute";
+import ErrorPage from "../components/ErrorPage";
+import DashboardLayout from "../layout/DashboardLayout";
+import DashboardHome from "../pages/dashboard/DashboardHome";
+import Profile from "../pages/dashboard/Profile";
+import Contact from "../pages/Contact";
+import Privacy from "../pages/Privacy";
+import About from "../pages/About";
+
+export const router = createBrowserRouter([
+  {
+    path: "/",
+    errorElement: <ErrorPage />,
+    element: <MainLayout />,
+    children: [
+      {
+        index: true,
+
+        element: <Home />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+      {
+        path: "/add-car",
+        element: (
+          <PrivateRoute>
+            <AddCar />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/browse-cars",
+        element: <BrowseCars />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/privacy",
+        element: <Privacy />,
+      },
+      {
+        path: "/Contact",
+        element: <Contact/>,
+      },
+      {
+        path: "/my-bookings",
+        element: (
+          <PrivateRoute>
+            <MyBookings />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/my-listings",
+        element: (
+          <PrivateRoute>
+            <MyListings />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/car-details/:id",
+        element: <PrivateRoute>
+          <CarDetails />
+        </PrivateRoute>,
+        loader: ({ params }) =>
+          fetch(`https://rent-wheels-server.vercel.app/cars/${params.id}`),
+      },
+    ],
+  },
+  {
+    path:'/',
+    element:<DashboardLayout/>,
+    children:[
+      {
+      path:'/dashboard' ,
+      element:<DashboardHome/>
+      },
+      {
+      path:'dashboard/profile' ,
+      element:<Profile/>
+      }
+    ]
+  }
+ 
+]);
