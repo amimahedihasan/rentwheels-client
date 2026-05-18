@@ -25,14 +25,14 @@ const Footer = () => {
             {[
               {
                 Icon: FaFacebookF,
-                url: "https://www.facebook.com/naif.adnan.90",
+                url: "https://www.facebook.com/mahedihasanmpi",
               },
-              { Icon: FaXTwitter, url: "https://x.com/NaifAdnan115902" },
+              { Icon: FaXTwitter, url: "https://x.com/ami_mahedi" },
               {
                 Icon: FaLinkedin,
-                url: "https://www.linkedin.com/in/naif-adnan/",
+                url: "https://www.linkedin.com/in/ami-mahedi-hasan/,
               },
-              { Icon: FaGithub, url: "https://github.com/adnan99999977" },
+              { Icon: FaGithub, url: "https://github.com/amimahedihasan" },
             ].map(({ Icon, url }, i) => (
               <button
                 key={i}
